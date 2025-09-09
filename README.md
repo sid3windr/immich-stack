@@ -28,7 +28,7 @@ password manager.
 
 ### INI configuration
 
-The scripts read `immich.ini` in the same directory as the script.
+The script reads `immich.ini` in the same directory as the script.
 
 ```
 [immich]
@@ -41,7 +41,7 @@ created above.
 
 ### Environment variables
 
-The scripts can also use environment variables instead of the INI file.
+The script can also use environment variables instead of the INI file.
 If the INI value is set, it will take precedence over the environment
 variables.
 
