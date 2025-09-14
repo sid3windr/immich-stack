@@ -126,6 +126,8 @@ if __name__ == "__main__":
     group.add_argument("--stack", action="store_true", help="Find duplicates with identical filenames and stack them")
     group.add_argument("--dry-run", action="store_true", help="Only print duplicates, do not stack them.")
 
+    parser.add_argument('--verbose', '-v', action='count', default=0, help='Increase verbosity')
+
     args = parser.parse_args()
 
     IMMICH_URL, API_KEY = load_config()
@@ -134,11 +136,14 @@ if __name__ == "__main__":
 
     if dupe_pairs:
         for pair in dupe_pairs:
-            print(f"Found pair: {pair['paths'][0]}  ↔  {pair['paths'][1]}")
+            if args.dry_run or args.verbose:
+                print(f"Found pair: {pair['paths'][0]}  ↔  {pair['paths'][1]}")
             if args.dry_run:
                 print("   [dry-run] Would stack these.")
             else:
                 result = stack_assets(IMMICH_URL, API_KEY, pair["ids"])
-                print(f"   ✅ Stacked to {result['primaryAssetId']}")
+                if args.verbose:
+                    print(f"   ✅ Stacked to {result['primaryAssetId']}")
     else:
-        print("No matching duplicates found.")
+        if args.dry_run or args.verbose:
+            print("No matching duplicates found.")
