@@ -65,5 +65,15 @@ To stack your identically named duplicates, just run:
 While the script only has one function, I didn't want to start messing with
 your Immich instance if you ran it without parameters.
 
-**Important**: If you don't pass a `--album` parameter, the script will ONLY
-process the pictures Immich itself already detected as duplicates.
+**Important**: If you don't pass either the `all-albums` or one or more `--album`
+parameters, the script will ONLY process the pictures Immich itself already detected
+as duplicates.
+
+The `--album` parameter takes an Immich album ID (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+The `--all-albums` parameter simply processes every one of your albums in sequence.
+
+To stack all similarly named photos in all of your albums, run:
+
+```
+./stack.py --stack --all-albums
+```
