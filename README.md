@@ -19,7 +19,7 @@ filenames are equal (apart from the extension).
 * Click on your profile icon in the top right, then choose **Account Settings**.
 * Fold out **API Keys** and click **New API Key**.
 * Give it a useful name, like **immich-stack**.
-* Give it **duplicate.read** and **stack.create** permissions .
+* Give it **album.read**, **duplicate.read** and **stack.create** permissions .
 * Click **Create**. You'll be presented with a single chance to copy this API
 key to your clipboard. Put it in your INI file (see below) and/or your
 password manager.
@@ -65,3 +65,5 @@ To stack your identically named duplicates, just run:
 While the script only has one function, I didn't want to start messing with
 your Immich instance if you ran it without parameters.
 
+**Important**: If you don't pass a `--album` parameter, the script will ONLY
+process the pictures Immich itself already detected as duplicates.
